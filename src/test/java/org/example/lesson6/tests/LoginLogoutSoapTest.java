@@ -5,14 +5,12 @@ import org.example.lesson6.pages.MainLoginPage;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 public class LoginLogoutSoapTest {
     String login = "for_mos_testing@mail.ru";
-    String password = "141086";
+    String password = "14108";
     private static final String URL = "https://milovarpro.ru/";
 
     WebDriver webDriver;
@@ -23,8 +21,8 @@ public class LoginLogoutSoapTest {
         webDriver.quit();
     }
 
-    @Test
     @DisplayName("Авторизация - успешно")
+    @Test
     public void successfulLogInOut() throws InterruptedException {
         webDriver = WebDriverManager.chromedriver().create();
 
@@ -36,16 +34,4 @@ public class LoginLogoutSoapTest {
                 .checkLoginButton();
     }
 
-    @Test
-    @DisplayName("Авторизация - неуспешо")
-    public void failedLogInOut() throws InterruptedException {
-        webDriver = WebDriverManager.chromedriver().create();
-
-        webDriver.get(URL);
-
-        new MainLoginPage(webDriver)
-                .clickLoginButton(login, password);
-                new MainLoginPage(webDriver)
-                .checkError("Несуществующая пара логин-пароль, попробуйте еще раз");
-    }
 }

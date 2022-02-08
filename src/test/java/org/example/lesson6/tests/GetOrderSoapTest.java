@@ -24,20 +24,17 @@ public class GetOrderSoapTest {
         webDriver.quit();
     }
 
-    @Test
     @DisplayName("Оформление заказа при пустой корзине - неуспешно")
+    @Test
     public void backProductTest() {
         WebDriver webDriver = WebDriverManager.chromedriver().create();
         webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         webDriver.get(URL);
 
-        webDriver.findElement(By.name("email")).sendKeys("for_mos_testing@mail.ru");
-        webDriver.findElement(By.name("password")).sendKeys("141085");
-        webDriver.findElement(By.xpath("//button[text()='Войти']")).click();
-
-
-        new MainLoginPage(webDriver).goToProductPage("Каталог товаров", "Отдушки")
+        new MainLoginPage(webDriver)
+                .clickLoginButton("for_mos_testing@mail.ru", "141085")
+                .goToProductPage("Каталог товаров", "Отдушки")
                 .putProductInCart(webDriver.findElement(By.xpath("//button[@data-goal-cart]")))
                 .goToCart()
                 .checkProductsInCart()
