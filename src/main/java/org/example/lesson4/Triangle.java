@@ -4,7 +4,7 @@ package org.example.lesson4;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.testng.annotations.Test;
+//import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
